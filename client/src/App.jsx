@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { LogOut, Activity } from 'lucide-react';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import LeadDetails from './pages/LeadDetails';
@@ -38,7 +39,7 @@ function App() {
   };
 
   if (loading) {
-    return <div className="loading-screen">Loading CRM...</div>;
+    return <div className="loading-screen">Nexus CRM Loading...</div>;
   }
 
   return (
@@ -46,8 +47,14 @@ function App() {
       <div className="app-container">
         {isAuthenticated && (
           <nav className="navbar">
-            <div className="nav-brand">Nexus CRM</div>
-            <button className="btn btn-logout" onClick={handleLogout}>Logout</button>
+            <div className="nav-brand" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Activity size={24} color="var(--primary-color)" />
+              Nexus CRM
+            </div>
+            <button className="btn btn-logout" onClick={handleLogout}>
+              <LogOut size={16} />
+              Logout
+            </button>
           </nav>
         )}
         <main className="main-content">
